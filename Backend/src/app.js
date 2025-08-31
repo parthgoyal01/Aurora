@@ -15,7 +15,7 @@ const app = express();
 
 /* using middlewares */
 app.use(cors({
-    origin: 'https://aurora-2ztn.onrender.com',
+    origin: 'http://localhost:5173',
     credentials: true
 }))
 app.use(express.json());
