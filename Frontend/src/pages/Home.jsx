@@ -112,9 +112,10 @@ const Home = () => {
     return (
       <div className="center-min-h-screen">
         <div className="auth-card" style={{ textAlign: 'center' }}>
-          <h1>Welcome to ChatGPT Clone</h1>
-          <p>Please login or register to access chat features.</p>
-          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', marginTop: '2rem' }}>
+        <img src='./src/assets/Aurora.png' style={{height:80, width:80, marginBottom:-50,marginLeft:140}}></img>
+          <h1>Welcome to Aurora</h1>
+          <p style={{ marginTop:-30}}>Please login or register to access chat features.</p>
+          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center',  }}>
             <Link to="/login">
               <button className="primary-btn">Login</button>
             </Link>
