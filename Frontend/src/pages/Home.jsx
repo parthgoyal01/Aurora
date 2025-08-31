@@ -39,7 +39,7 @@ const Home = () => {
 
   // Check authentication status
   useEffect(() => {
-    axios.get("http://localhost:3000/api/chat", { withCredentials: true })
+    axios.get("https://aurora-2ztn.onrender.com/api/chat", { withCredentials: true })
       .then(response => {
         dispatch(setChats(response.data.chats.reverse()));
         setIsAuthenticated(true);
@@ -48,7 +48,7 @@ const Home = () => {
         setIsAuthenticated(false);
       });
 
-    const tempSocket = io("http://localhost:3000", {
+    const tempSocket = io("https://aurora-2ztn.onrender.com", {
       withCredentials: true,
     });
 
@@ -66,7 +66,7 @@ const Home = () => {
     let title = window.prompt('Enter a title for the new chat:', '');
     if (title) title = title.trim();
     if (!title) return;
-    const response = await axios.post("http://localhost:3000/api/chat", {
+    const response = await axios.post("https://aurora-2ztn.onrender.com/api/chat", {
       title
     }, {
       withCredentials: true
@@ -93,7 +93,7 @@ const Home = () => {
   };
 
   const getMessages = async (chatId) => {
-    const response = await axios.get(`http://localhost:3000/api/chat/messages/${chatId}`, { withCredentials: true });
+    const response = await axios.get(`https://aurora-2ztn.onrender.com/api/chat/messages/${chatId}`, { withCredentials: true });
     setMessages(response.data.messages.map(m => ({
       type: m.role === 'user' ? 'user' : 'ai',
       content: m.content
@@ -132,7 +132,7 @@ const Home = () => {
   const handleDeleteChat = async (chatId) => {
     if (!window.confirm('Are you sure you want to delete this chat? This action cannot be undone.')) return;
     try {
-      await axios.delete(`http://localhost:3000/api/chat/${chatId}`, { withCredentials: true });
+      await axios.delete(`https://aurora-2ztn.onrender.com/api/chat/${chatId}`, { withCredentials: true });
       // Remove chat from Redux state
       const updatedChats = chats.filter(c => c.id !== chatId && c._id !== chatId);
       dispatch(setChats(updatedChats));
